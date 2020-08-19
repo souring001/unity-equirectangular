@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class CubeMapCamera : MonoBehaviour {
 
@@ -16,6 +17,10 @@ public class CubeMapCamera : MonoBehaviour {
 
     private RenderTexture renderTexture;
     private Texture2D equirectangularTexture;
+
+    public string imgDirPath;
+    private string imgPath;
+    private int frame = 0;
 
     // Use this for initialization
     void Start () {
@@ -46,6 +51,12 @@ public class CubeMapCamera : MonoBehaviour {
         Graphics.Blit(cubemap, renderTexture, convMaterial);
         equirectangularTexture.ReadPixels(new Rect(0, 0, outputWidth, outputHeight), 0, 0, false);
         equirectangularTexture.Apply();
-    }
-}
 
+        imgPath = imgDirPath + "/" + frame.ToString().PadLeft(5, '0') + ".png";
+        File.WriteAllBytes(imgPath, equirectangularTexture.EncodeToPNG());
+
+        frame++;
+    }
+
+
+}

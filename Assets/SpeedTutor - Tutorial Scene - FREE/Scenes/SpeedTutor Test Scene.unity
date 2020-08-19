@@ -2167,9 +2167,10 @@ MonoBehaviour:
   cubemap: {fileID: 0}
   image: {fileID: 856681886}
   convMaterial: {fileID: 0}
-  outputWidth: 4096
-  outputHeight: 2048
+  outputWidth: 2628
+  outputHeight: 1314
   cubeWidth: 1280
+  imgDirPath: 
 --- !u!1 &1109440459
 GameObject:
   m_ObjectHideFlags: 0
